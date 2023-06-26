@@ -125,7 +125,39 @@ public:
             return true;
         }
     return false;    
+8.Ans
+class Solution {
+public:
+    int partitionArray(std::vector<int>& nums, int k) {
+        int n = nums.size();
+        int l = 0, r = 0, groups = 0;
+
+        // Sort the elements
+        std::sort(nums.begin(), nums.end());
+
+        while (r < n) {
+            // Move right pointer until the difference between the left and the right pointer is <= k
+            if (nums[r] - nums[l] <= k) {
+                r++;
+            }
+            // Update the group count and the left pointer
+            else {
+                groups++;
+                l = r;
+            }
+        }
+
+        return groups + 1;
     }
 };
-8.Ans
+
+
+
+
+
+
+
+
+
+
 
